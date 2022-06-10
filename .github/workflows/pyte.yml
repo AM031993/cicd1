@@ -1,0 +1,15 @@
+name: fladev
+on: push
+
+jobs:
+  my-job:
+    name: My Job
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v3 
+    - name: Test rule 001
+      run: |
+        pip install -r requirements.txt
+        python3 server.py > log.txt > 2&1 &
+        pytest
